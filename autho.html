@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Авторизация</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Внутренний стиль для страницы регистрации */
+        body {
+            font-family: 'Comic Sans MS', sans-serif;
+            background-color: #d2f1a9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            width: 350px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #5e9232;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin: 10px 0 5px;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #5e9232;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 1em;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background-color: #f9d423;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2em;
+            color: #333;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #ffae00;
+        }
+
+        .error {
+            color: red;
+            font-size: 0.9em;
+            margin-top: -15px;
+            margin-bottom: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Авторизация</h2>
+        <form id="loginForm">
+
+            <label for="email">Электронная почта:</label>
+            <input type="email" id="email" name="email" required>
+<!--            <div class="error" id="emailError">Введите корректную почту</div>-->
+
+            <label for="password">Пароль:</label>
+            <input type="password" id="password" name="password" required>
+            <div class="error" id="passwordError">Неверный пароль </div>
+
+            <button type="submit">Войти</button>
+        </form>
+        <p id="message" style="color:red; text-align:center;"></p>
+    </div>
+
+    <script>
+        console.log('1');
+        // Валидация формы
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+         let isValid = true;
+
+            const userpassword = document.getElementById('password').value;
+            const mail = document.getElementById('email').value;
+            console.log('2');
+
+            // Получаем массивы имен и паролей из localStorage
+            const mails = JSON.parse(localStorage.getItem('mails')) || [];
+            const passwords = JSON.parse(localStorage.getItem('passwords')) || [];
+
+            console.log('Адреса:', mails);
+            console.log('Пароли:', passwords);
+
+            // Проверяем, существует ли введенное имя и пароль
+            const userIndex = mails.indexOf(mail);
+
+            if (userIndex !== -1 && passwords[userIndex] === userpassword) {
+                alert('Авторизация успешна!');
+                window.location.href = 'index.html'; // Пример перенаправления;
+            } else {
+                // Неверные данные
+                document.getElementById('message').textContent = 'Неверное имя или пароль!'
+                isValid = false;
+            };
+
+            if (!isValid) {
+                event.preventDefault(); // Останавливаем отправку формы, если есть ошибки
+            };
+
+        });
+    </script>
+
+</body>
+</html>
+
