@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Мой профиль</h1>
+        <nav>
+            <a href="index.html">На главную</a>
+        </nav>
+    </header>
+
+    <section class="profile-container">
+        <!-- Левая колонка - информация о пользователе -->
+        <div class="profile-info">
+            <img src="avatar.avif" alt="User avatar" class="avatar">
+            <h2>Имя пользователя: <span>Player1</span></h2>
+            <p>E-mail: <span>player1@example.com</span></p>
+            <p>Дата регистрации: <span>2024-01-01</span></p>
+            <div class="profile-actions">
+                <button onclick="window.location.href='settings.html'">Настройки профиля</button>
+            </div>
+        </div>
+
+        <!-- Центральная колонка - новости о профиле -->
+        <div class="profile-news">
+            <h2>Новости профиля</h2>
+            <p>Здесь будут отображаться обновления пользователя</p>
+        </div>
+
+        <!-- Правая колонка - статистика пользователя -->
+        <div class="profile-stats">
+            <h2>Статистика</h2>
+            <p>Лучший отзыв: <span>4.5 звезды</span></p>
+            <p>Написанных статей: <span>12</span></p>
+            <p>Оставленных комментариев: <span>54</span></p>
+        </div>
+    </section>
+</body>
+</html>
