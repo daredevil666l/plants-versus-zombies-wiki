@@ -180,7 +180,9 @@
         localStorage.setItem('mails', JSON.stringify(mails));
 
         if (isValid) {
-                event.preventDefault(); // Останавливаем отправку формы, если есть ошибки
+                alert('Регистрация успешна!');
+                window.location.href = 'autho.html';
+                event.preventDefault();
             };
         });
     </script>
