@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Растения против Зомби Вики</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Растения против Зомби Вики</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="plants.html">Растения</a></li>
+                <li><a href="zombies.html">Зомби</a></li>
+                <li><a href="levels.html">Уровни</a></li>
+                <li><a href="register.html">Регистрация</a></li>
+                <li><a href="autho.html">Авторизация</a></li>
+                <li><a href="profile.html">Мой профиль</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="intro">
+            <h2>Подсолнух</h2>
+            <p>Вырабатывает солнце — валюту для покупки остальных растений и грибов во время прохождения уровня. </p>
+            <img src="sunflower.jfif" alt="Подсолнух" class="plant-image">
+            <ul>
+                    <li><strong>Стоимость:</strong> 50 солнечных единиц</li>
+                    <li><strong>Способность:</strong> Дает 25 солнц</li>
+                </ul>
+        </section>
+<section class="comments">
+    <h3>Оставить комментарий</h3>
+    <form id="commentForm">
+        <textarea id="commentInput" placeholder="Ваш комментарий..." required></textarea>
+        <button type="submit">Отправить</button>
+    </form>
+    <div id="commentsContainer"></div>
+</section>
+
+        <script>
+const comments = []; // Массив для хранения комментариев
+
+document.getElementById('commentForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Предотвращает перезагрузку страницы
+
+    const commentInput = document.getElementById('commentInput');
+    const commentText = commentInput.value;
+
+    if (commentText) {
+        comments.push(commentText); // Добавляем комментарий в массив
+
+        const commentDiv = document.createElement('div');
+        commentDiv.textContent = commentText;
+        commentDiv.classList.add('comment');
+
+        document.getElementById('commentsContainer').appendChild(commentDiv);
+        commentInput.value = ''; // Очищает поле ввода
+    }
+});
+
+</script>
+
+
+    </main>
+
+    <footer>
+        <p>© 2024 Растения против Зомби Вики</p>
+    </footer>
+</body>
+</html>

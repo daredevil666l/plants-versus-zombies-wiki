@@ -98,6 +98,7 @@
     </div>
 
     <script>
+        console.log('1');
         // Валидация формы
         document.getElementById('registrationForm').addEventListener('submit', function(event) {
             let isValid = true;
@@ -116,7 +117,7 @@
             // Проверка длины пароля
             const password = document.getElementById('password').value;
             const passwordError = document.getElementById('passwordError');
-            if (password.length < 8) {
+            if (password.length < 1) {
                 passwordError.style.display = 'block';
                 isValid = false;
             } else {
@@ -135,8 +136,57 @@
 
             if (!isValid) {
                 event.preventDefault(); // Останавливаем отправку формы, если есть ошибки
+            };
+
+
+        console.log('45');
+        // Параллельные массивы для хранения имен и паролей
+<!--        var usernames = [];-->
+<!--        var emails = [];-->
+<!--        var passwords = [];-->
+
+        const usernames = JSON.parse(localStorage.getItem('usernames')) || [];
+        const passwords = JSON.parse(localStorage.getItem('passwords')) || [];
+        const mails = JSON.parse(localStorage.getItem('mails')) || [];
+
+        // Получаем значения из полей ввода
+        const username = document.getElementById('username').value;
+        const mail = document.getElementById('email').value;
+        const userpassword = document.getElementById('password').value;
+
+        // Сохраняем данные в параллельные массивы
+        usernames.push(username);
+        mails.push(mail);
+        passwords.push(userpassword);
+
+<!--        updateUserList();-->
+        console.log('Пользователи:', usernames);
+        console.log('Адреса:', mails);
+        console.log('Пароли:', passwords);
+
+        function updateUserList() {
+            const userList = document.getElementById('userList');
+<!--            userList.innerHTML = ''; // Очищаем текущий список-->
+
+            for (let i = 0; i < usernames.length; i++) {
+                const listItem = document.createElement('li');
+                listItem.textContent = "Имя: ${usernames[i]},Почта: ${mails[i]}, Пароль: ${passwords[i]}";
+                userList.appendChild(listItem);
             }
+        };
+
+        localStorage.setItem('usernames', JSON.stringify(usernames));
+        localStorage.setItem('passwords', JSON.stringify(passwords));
+        localStorage.setItem('mails', JSON.stringify(mails));
+
+        if (isValid) {
+                alert('Регистрация успешна!');
+                window.location.href = 'autho.html';
+                event.preventDefault();
+            };
         });
     </script>
+
 </body>
 </html>
+
