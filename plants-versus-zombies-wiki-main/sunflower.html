@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Растения против Зомби Вики</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Растения против Зомби Вики</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="plants.html">Растения</a></li>
+                <li><a href="zombies.html">Зомби</a></li>
+                <li><a href="levels.html">Уровни</a></li>
+                <li><a href="register.html">Регистрация</a></li>
+                <li><a href="autho.html">Авторизация</a></li>
+                <li><a href="profile.html">Мой профиль</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="intro">
+            <h2>Подсолнух</h2>
+            <p>Вырабатывает солнце — валюту для покупки остальных растений и грибов во время прохождения уровня. </p>
+            <img src="sunflower.jfif" alt="Подсолнух" class="plant-image">
+            <ul>
+                    <li><strong>Стоимость:</strong> 50 солнечных единиц</li>
+                    <li><strong>Способность:</strong> Дает 25 солнц</li>
+                </ul>
+        </section>
+<div class="comment-block" id="commentBlock">
+<!— Существующий комментарий —>
+<div class="comment">
+<img src="conehead.webp" alt="Аватар" class="avatar">
+<div class="comment-content">
+<h4 class="comment-author">Имя комментария</h4>
+<p class="comment-text">Это пример комментария. Здесь можно написать текст, который будет отображаться для всех пользователей.</p>
+</div>
+</div>
+</div>
+
+<!— Форма для добавления нового комментария —>
+<div class="add-comment-form">
+<input type="text" id="commentInput" placeholder="Напишите комментарий..." />
+<button onclick="addComment()">Добавить комментарий</button>
+</div>
+
+<script>
+    function addComment() {
+const commentInput = document.getElementById('commentInput');
+const commentText = commentInput.value.trim();
+
+if (commentText === '') {
+alert('Введите текст комментария.');
+return;
+}
+
+// Создаем новый элемент комментария
+const commentBlock = document.getElementById('commentBlock');
+const newComment = document.createElement('div');
+newComment.className = 'comment';
+
+// Добавляем аватар
+const avatar = document.createElement('img');
+avatar.src = 'avatar.avif';
+avatar.alt = 'Аватар';
+avatar.className = 'avatar';
+newComment.appendChild(avatar);
+
+// Добавляем содержимое комментария
+const commentContent = document.createElement('div');
+commentContent.className = 'comment-content';
+
+const authorName = document.createElement('h4');
+authorName.className = 'comment-author';
+authorName.textContent = 'Саша';
+
+const commentTextElement = document.createElement('p');
+commentTextElement.className = 'comment-text';
+commentTextElement.textContent = commentText;
+
+commentContent.appendChild(authorName);
+commentContent.appendChild(commentTextElement);
+newComment.appendChild(commentContent);
+
+// Добавляем новый комментарий в блок комментариев
+commentBlock.appendChild(newComment);
+
+// Очищаем поле ввода
+commentInput.value = '';
+}
+
+</script>
+<!--<section class="comments">-->
+<!--    <h3>Оставить комментарий</h3>-->
+<!--    <form id="commentForm">-->
+<!--        <textarea id="commentInput" placeholder="Ваш комментарий..." required></textarea>-->
+<!--        <button type="submit">Отправить</button>-->
+<!--    </form>-->
+<!--    <div id="commentsContainer"></div>-->
+</section>
+
+
+    </main>
+
+    <footer>
+        <p>© 2024 Растения против Зомби Вики</p>
+    </footer>
+</body>
+</html>
