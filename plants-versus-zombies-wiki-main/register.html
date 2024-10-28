@@ -118,6 +118,7 @@
             const password = document.getElementById('password').value;
             const passwordError = document.getElementById('passwordError');
             if (password.length < 1) {
+            if (password.length < 8) {
                 passwordError.style.display = 'block';
                 isValid = false;
             } else {
@@ -190,3 +191,8 @@
 </body>
 </html>
 
+            }
+        });
+    </script>
+</body>
+</html>
